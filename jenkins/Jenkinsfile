@@ -18,7 +18,11 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                bat 'sh deliver.sh'
+                // Checkout the repository
+                checkout scm
+                
+                // Execute the shell script from the checked-out repository
+                bat 'sh ./jenkins/scripts/deliver.sh'
             }
         }
     }
